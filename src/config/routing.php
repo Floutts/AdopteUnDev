@@ -8,6 +8,8 @@ function getPage(){
     $lesPages['profil'] = "actionProfil";
     $lesPages['connexion'] = "actionConnexion";
     $lesPages['inscription'] = "actionInscription";
+    $lesPages['bd'] = "actionBd";
+
 
     if(isset($_GET['page'])){
         $page = $_GET['page'];
