@@ -28,16 +28,17 @@ function actionInscription($twig) {
     echo $twig->render('inscription.html.twig',array());
 }
 function actionBd($twig){
-    if (isset($_POST['BtUploadM'])) {
-        shell_exec("mysqldump –nodate -u login4060 -permsZqJIUvcQzTw AdopteUnDev > /bd/AdopteUnDev.sql");
-    }
-    if (isset($_POST['BtUploadF'])) {
-        shell_exec("mysqldump –nodate -u login4061 -pCHohAQLpbbYXomb AdopteUnDev > /bd/AdopteUnDev.sql");
-    }
     if (isset($_POST['BtDownloadM'])) {
-        shell_exec("mysql -u login4060 --password=ermsZqJIUvcQzTw AdopteUnDev < /bd/AdopteUnDev.sql");
+        echo "mysqldump –-no-data -u login4060 -permsZqJIUvcQzTw AdopteUnDev > ../src/bd/AdopteUnDev.sql";
+        shell_exec("mysqldump -u login4060 -permsZqJIUvcQzTw AdopteUnDev > ../src/bd/AdopteUnDev.sql");
     }
     if (isset($_POST['BtDownloadF'])) {
+        shell_exec("mysqldump –-no-data -u login4061 -pCHohAQLpbbYXomb AdopteUnDev > /bd/AdopteUnDev.sql");
+    }
+    if (isset($_POST['BtUploadM'])) {
+        shell_exec("mysql -u login4060 --password=ermsZqJIUvcQzTw AdopteUnDev < ../src/bd/AdopteUnDev.sql");
+    }
+    if (isset($_POST['BtUploadF'])) {
         shell_exec("mysql -u login4061 --password=CHohAQLpbbYXomb AdopteUnDev < /bd/AdopteUnDev.sql");
     }
     echo $twig->render('bd.html.twig', array());
