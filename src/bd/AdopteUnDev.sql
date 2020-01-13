@@ -29,10 +29,10 @@ CREATE TABLE `developpeur` (
   `email` varchar(100) NOT NULL,
   `mdp` varchar(100) NOT NULL,
   `NbUnique` varchar(13) NOT NULL,
-  `sffsd` int(10) NOT NULL,
   `aaaa` int(11) NOT NULL,
   `bbbb` int(11) NOT NULL,
   `cccc` int(11) NOT NULL,
+  `dddd` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -55,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-01-13 10:16:33
+-- Dump completed on 2020-01-13 10:45:23
