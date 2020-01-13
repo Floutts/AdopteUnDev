@@ -34,15 +34,15 @@ function actionBd($twig){
     }
     if (isset($_POST['BtDownloadF'])) {
         echo "mysqldump –-no-data -u login4061 -pCHohAQLpbbYXomb AdopteUnDev > ../src/bd/AdopteUnDev.sql";
-        shell_exec("mysqldump -u login4061 -pCHohAQLpbbYXomb AdopteUnDev > /bd/AdopteUnDev.sql");
+        shell_exec("mysqldump -u login4061 -pCHohAQLpbbYXomb AdopteUnDev > ../src/bd/AdopteUnDev.sql");
     }
     if (isset($_POST['BtUploadM'])) {
         echo "mysql -u login4060 --password=ermsZqJIUvcQzTw AdopteUnDev < ../src/bd/AdopteUnDev.sql";
         shell_exec("mysql -u login4060 --password=ermsZqJIUvcQzTw AdopteUnDev < ../src/bd/AdopteUnDev.sql");
     }
     if (isset($_POST['BtUploadF'])) {
-        echo "mysql -u login4061 --password=CHohAQLpbbYXomb AdopteUnDev < /bd/AdopteUnDev.sql";
-        shell_exec("mysql -u login4061 --password=CHohAQLpbbYXomb AdopteUnDev < /bd/AdopteUnDev.sql");
+        echo "mysql -u login4061 --password=CHohAQLpbbYXomb AdopteUnDev < ../bd/AdopteUnDev.sql";
+        shell_exec("mysql -u login4061 --password=CHohAQLpbbYXomb AdopteUnDev < ../src/bd/AdopteUnDev.sql");
     }
     echo $twig->render('bd.html.twig', array());
 

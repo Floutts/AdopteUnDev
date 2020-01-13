@@ -33,6 +33,7 @@ CREATE TABLE `developpeur` (
   `aaaa` int(11) NOT NULL,
   `bbbb` int(11) NOT NULL,
   `cccc` int(11) NOT NULL,
+  `dfsswfdqds` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -55,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-01-13 10:16:33
+-- Dump completed on 2020-01-13 10:40:48
