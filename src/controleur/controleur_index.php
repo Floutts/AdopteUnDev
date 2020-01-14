@@ -25,7 +25,26 @@ function actionConnexion($twig) {
 }
 
 function actionInscription($twig) {
-    echo $twig->render('inscription.html.twig',array());
+    $form = array();
+    if (isset($_POST['btInscrire'])){
+        echo "fdsfse";
+        $Email = $_POST['Email'];
+        $Mdp = $_POST['Mdp'];
+        $ConfMdp =$_POST['ConfMdp'];
+        $Nom = $_POST['Nom'];
+        $Prenom = $_POST['Prenom'];
+        //$Role = $_POST['Role'];
+        $form['valide'] = true;
+        if ($Mdp!=$ConfMdp){
+            $form['valide'] = false;
+            $form['message'] = 'Les mots de passe sont différents';
+        }
+
+        $form['email'] = $Email;
+      //  $form['role'] = $role;
+    }
+
+    echo $twig->render('inscription.html.twig',array('form'=>$form));
 }
 function actionBd($twig){
     if (isset($_POST['BtDownloadM'])) {
