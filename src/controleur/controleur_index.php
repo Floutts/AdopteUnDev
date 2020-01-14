@@ -67,3 +67,7 @@ function actionBd($twig){
 
 
 }
+
+function actionMaintenance($twig){
+    echo $twig->render('maintenance.html.twig');
+}

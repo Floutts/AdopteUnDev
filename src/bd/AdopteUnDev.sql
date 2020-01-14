@@ -16,6 +16,32 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `code`
+--
+
+DROP TABLE IF EXISTS `code`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `code` (
+  `idDev` int(11) NOT NULL,
+  `idLang` int(11) NOT NULL,
+  KEY `idDev` (`idDev`),
+  KEY `idLang` (`idLang`),
+  CONSTRAINT `code_ibfk_1` FOREIGN KEY (`idDev`) REFERENCES `developpeur` (`id`),
+  CONSTRAINT `code_ibfk_2` FOREIGN KEY (`idLang`) REFERENCES `langage` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `code`
+--
+
+LOCK TABLES `code` WRITE;
+/*!40000 ALTER TABLE `code` DISABLE KEYS */;
+/*!40000 ALTER TABLE `code` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `developpeur`
 --
 
@@ -29,6 +55,7 @@ CREATE TABLE `developpeur` (
   `email` varchar(100) NOT NULL,
   `mdp` varchar(100) NOT NULL,
   `NbUnique` varchar(13) NOT NULL,
+  `aaaa` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -41,6 +68,29 @@ LOCK TABLES `developpeur` WRITE;
 /*!40000 ALTER TABLE `developpeur` DISABLE KEYS */;
 /*!40000 ALTER TABLE `developpeur` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `langage`
+--
+
+DROP TABLE IF EXISTS `langage`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `langage` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `libelle` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `langage`
+--
+
+LOCK TABLES `langage` WRITE;
+/*!40000 ALTER TABLE `langage` DISABLE KEYS */;
+/*!40000 ALTER TABLE `langage` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -51,4 +101,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-01-13 11:07:34
+-- Dump completed on 2020-01-14  9:32:57
