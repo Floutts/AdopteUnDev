@@ -55,7 +55,7 @@ CREATE TABLE `developpeur` (
   `email` varchar(100) NOT NULL,
   `mdp` varchar(100) NOT NULL,
   `NbUnique` varchar(13) NOT NULL,
-  `aaaa` int(11) NOT NULL,
+  `sdfs` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -101,4 +101,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-01-14  9:32:57
+-- Dump completed on 2020-01-16  7:37:17

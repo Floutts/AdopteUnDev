@@ -48,12 +48,14 @@ function actionInscription($twig) {
 }
 function actionBd($twig){
     if (isset($_POST['BtDownloadM'])) {
-        echo "mysqldump –-no-data -u login4060 -permsZqJIUvcQzTw AdopteUnDev > ../src/bd/AdopteUnDev.sql";
+        echo "mysqldump -u login4060 -permsZqJIUvcQzTw AdopteUnDev > ../src/bd/AdopteUnDev.sql";
         shell_exec("mysqldump -u login4060 -permsZqJIUvcQzTw AdopteUnDev > ../src/bd/AdopteUnDev.sql");
+        echo (chmod("../src/bd/AdopteUnDev.sql",0777));
     }
     if (isset($_POST['BtDownloadF'])) {
         echo "mysqldump  -u login4061 -pCHohAQLpbbYXomb AdopteUnDev > ../src/bd/AdopteUnDev.sql";
         shell_exec("mysqldump -u login4061 -pCHohAQLpbbYXomb AdopteUnDev > ../src/bd/AdopteUnDev.sql");
+        echo (chmod("../src/bd/AdopteUnDev.sql",0777));
     }
     if (isset($_POST['BtUploadM'])) {
         echo "mysql -u login4060 --password=ermsZqJIUvcQzTw AdopteUnDev < ../src/bd/AdopteUnDev.sql";
