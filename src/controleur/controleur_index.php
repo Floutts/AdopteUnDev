@@ -21,13 +21,27 @@ function actionProfil($twig) {
 }
 
 function actionConnexion($twig) {
-    echo $twig->render('connexion.html.twig', array());
+    $form = array();
+    $form['valide'] = true;
+    if (isset($_POST['btConnecter'])) {
+        $inputEmail = $_POST['Email'];
+        $inputPassword = $_POST['Mdp'];
+        $_SESSION['login'] = $inputEmail;
+        $_SESSION['role'] = 1;
+        header("Location:index.php");
+    }
+        echo $twig->render('connexion.html.twig', array('form'=>$form));
+}
+
+function actionDeconnexion($twig){
+    session_unset();
+    session_destroy();
+    header("Location:index.php");
 }
 
 function actionInscription($twig) {
     $form = array();
     if (isset($_POST['btInscrire'])){
-        echo "fdsfse";
         $Email = $_POST['Email'];
         $Mdp = $_POST['Mdp'];
         $ConfMdp =$_POST['ConfMdp'];
