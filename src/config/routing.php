@@ -10,9 +10,11 @@ function getPage($db){
     $lesPages['inscription'] = "actionInscription";
     $lesPages['bd'] = "actionBd";
     $lesPages['maintenance'] = "actionMaintenance";
+    $lesPages['deconnexion'] = "actionDeconnexion";
 
 
-if ($db!=null) {
+
+    if ($db!=null) {
     if (isset($_GET['page'])) {
         $page = $_GET['page'];
     } else {
