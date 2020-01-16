@@ -1,4 +1,39 @@
 {% extends "base.html.twig" %}
 {% block contenu %}
-    <h1> Profil </h1>
+
+    <div class="media" style="padding-top: 100px">
+        <img src="../images/a.jpg" class="mr-3 rounded-circles"  alt="photo à changer">
+        <div class="media-body">
+            <h5 class="mt-0 profil mr-3" >"Username"
+            Inscrit le ...</h5>
+            <table class="table ">
+                <tbody style="padding-left: 100px" >
+                <tr>
+                    <th scope="row">Nom</th>
+                    <td>Mark</td>
+
+                </tr>
+                <tr>
+                    <th scope="row">Prenom</th>
+                    <td>Jacob</td>
+
+                </tr>
+                <tr>
+                    <th scope="row">Email</th>
+                    <td>Larry</td>
+                </tr>
+                <tr>
+                    <th scope="row">Langages connus</th>
+                    <td> Python , php </td>
+
+                </tr>
+                </tbody>
+            </table>
+            <button class="btn btn-lg btn-primary btn-block" type="submit" name="btModifier">Modifier mon profil</button>
+
+        </div>
+    </div>
+
+
+
 {% endblock %}
