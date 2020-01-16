@@ -55,8 +55,10 @@ CREATE TABLE `developpeur` (
   `email` varchar(100) NOT NULL,
   `mdp` varchar(100) NOT NULL,
   `NbUnique` varchar(13) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+  `idRole` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idRole` (`idRole`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -65,7 +67,7 @@ CREATE TABLE `developpeur` (
 
 LOCK TABLES `developpeur` WRITE;
 /*!40000 ALTER TABLE `developpeur` DISABLE KEYS */;
-INSERT INTO `developpeur` VALUES (1,'Iran','Trump','Iran.Trump@guerre.fr','laFinDuMonde','');
+INSERT INTO `developpeur` VALUES (2,'alphonse','gluiglui','a.g@fr','$2y$10$/63RwuPjVbSMGlVNFbBQCuwSt0Dg1oH7o6739cXzmVJgSp4nMYkSO','5e20393176315',2);
 /*!40000 ALTER TABLE `developpeur` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -91,6 +93,30 @@ LOCK TABLES `langage` WRITE;
 /*!40000 ALTER TABLE `langage` DISABLE KEYS */;
 /*!40000 ALTER TABLE `langage` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `role`
+--
+
+DROP TABLE IF EXISTS `role`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `role` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `libelle` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `role`
+--
+
+LOCK TABLES `role` WRITE;
+/*!40000 ALTER TABLE `role` DISABLE KEYS */;
+INSERT INTO `role` VALUES (1,'Administrateur'),(2,'Client');
+/*!40000 ALTER TABLE `role` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -101,5 +127,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-01-16  8:36:47
-
+-- Dump completed on 2020-01-16 10:33:38
