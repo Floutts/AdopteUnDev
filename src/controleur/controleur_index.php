@@ -50,22 +50,38 @@ function actionInscription($twig,$db)
         $nom = $_POST['Nom'];
         $prenom = $_POST['Prenom'];
         $role = $_POST['Role'];
+        $valide = false;
         $form['valide'] = true;
         if ($mdp != $confMdp) {
             $form['valide'] = false;
             $form['message'] = 'Les mots de passe sont différents';
         } else {
             $Developpeur = new Developpeur($db);
-            $exec = $Developpeur->insert($email, password_hash($mdp, PASSWORD_DEFAULT), $role, $nom, $prenom,$nbUnique);
+            $exec = $Developpeur->insert($email, password_hash($mdp, PASSWORD_DEFAULT), $role, $nom, $prenom,$nbUnique,$valide);
             if (!$exec) {
                 $form['valide'] = false;
                 $form['message'] = 'Problème d\'insertion dans la table developpeur ';
 
             }
+            $message = "
+            <html>
+                <head>
+                </head>
+                <body>
+                Bienvenue sur AdopteUnDev, Pour confirmer votre inscription, veuillez cliquer sur le lien ci contre           
+                <a href='http://serveur1.arras-sio.com/symfony4-4060/AdopteUnDev/web/index.php?page=validation&email=$email&nbUnique=$nbUnique'>Valider votre inscription</a>
+                </body>
+            </html>
+             ";
+            $headers[] = 'MIME-Version: 1.0';
+            $headers[] = 'Content-type: text/html; charset=iso-8859-1';
+            //$message = wordwrap($message, 70, "\r\n");
+            mail($email, 'Inscription AdopteUnDev', $message, implode("\n",$headers));
         }
 
             $form['email'] = $email;
             $form['role'] = $role;
+
         }
 
         echo $twig->render('inscription.html.twig', array('form' => $form));
@@ -100,4 +116,34 @@ function actionInscription($twig,$db)
     function actionMaintenance($twig)
     {
         echo $twig->render('maintenance.html.twig');
+    }
+
+    function actionValidation($twig,$db){
+        $form = array();
+        if(isset($_GET['email'])){
+            $developpeur = new Developpeur($db);
+            $unDeveloppeur = $developpeur->selectByEmail($_GET['email']);
+            if ($unDeveloppeur!=null){
+                if ( $unDeveloppeur['nbUnique'] == $_GET['nbUnique']){
+                    $exec = $developpeur->update($_GET['email']);
+                        if (!$exec){
+                            $form['valide'] = false;
+                            $form['message'] = 'Validation échouée';
+                        } else{
+                            $form['valide'] = true;
+                            $form['message'] = 'Validation Réussie';
+                        }
+                }
+                else{
+                    $form['message'] = 'Validation échouée';
+                }
+            }
+            else{
+                $form['message'] = 'Utilisateur incorrect';
+            }
+        }
+        else{
+            $form['message'] = 'Utilisateur non précisé';
+        }
+        echo $twig->render('validation.html.twig', array('form'=>$form));
     }

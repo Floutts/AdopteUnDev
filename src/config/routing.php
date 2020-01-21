@@ -11,7 +11,7 @@ function getPage($db){
     $lesPages['bd'] = "actionBd";
     $lesPages['maintenance'] = "actionMaintenance";
     $lesPages['deconnexion'] = "actionDeconnexion";
-
+    $lesPages['validation'] = "actionValidation";
 
 
     if ($db!=null) {

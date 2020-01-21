@@ -1,0 +1,12 @@
+{% extends "base.html.twig" %}
+{% block contenu %}
+
+        {% if form.valide == true %}
+        <h1 class="alert alert-success" role="alert">{{ form.message }}</h1>
+        <h1 class="h3 mb-3 font-weight-normal"><a href="index.php?page=connexion">Se connecter</a></h1>
+        {% else %}
+        <h1 class="alert alert-danger" role="alert">{{ form.message }}</h1>
+        <h1 class="h3 mb-3 font-weight-normal"><a href="index.php?page=connexion">Se connecter</a></h1>
+        {% endif %}
+
+{% endblock %}
