@@ -2,6 +2,7 @@
 class Developpeur {
     private $db;
     private $insert;
+    private $connect;
     private $select;
     private $selectByEmail;
     private $update;
@@ -13,6 +14,8 @@ class Developpeur {
         //$this->select= $db->prepare("")
         $this->selectByEmail = $db->prepare("select email,nbUnique from developpeur d where email=:email");
         $this->update= $db->prepare("update developpeur set validation=true where email=:email ");
+        $this->connect= $db->prepare("select email, mdp from developpeur where email=:email");
+
     }
 
 
@@ -41,5 +44,13 @@ class Developpeur {
             $r=false;
         }
         return $r;
+    }
+
+    public function connect($email){
+        $this->connect->execute(array(':email'=>$email));
+        if ($this->connect->errorCode()!=0){
+            print_r($this->connect->errorInfo());
+        }
+        return $this -> connect -> fetch() ;
     }
 }

@@ -20,15 +20,31 @@ function actionProfil($twig) {
     echo $twig->render('profil.html.twig', array());
 }
 
-function actionConnexion($twig) {
+function actionConnexion($twig,$db) {
     $form = array();
     $form['valide'] = true;
     if (isset($_POST['btConnecter'])) {
-        $inputEmail = $_POST['Email'];
-        $inputPassword = $_POST['Mdp'];
-        $_SESSION['login'] = $inputEmail;
+        $Email = $_POST['Email'];
+        $Mdp = $_POST['Mdp'];
+        $_SESSION['login'] = $Email;
         $_SESSION['role'] = 1;
-        header("Location:index.php");
+        $developpeur = new Developpeur($db);
+        $unDeveloppeur=$developpeur->connect($Email);
+        if($unDeveloppeur!=null){
+            if(!password_verify($Mdp,$unDeveloppeur['mdp'])){
+                $form['valide']=false;
+                $form['message']='Login ou mot de passe incorrect';
+            }
+            else{
+                $_SESSION['login'] = $Email;
+                $_SESSION['role'] = $unDeveloppeur['idRole'];
+                header("Location:index.php");
+            }
+        }
+        else{
+            $form['valide']=false;
+            $form['message'] ='Login ou mot de passe incorrect';
+        }
     }
         echo $twig->render('connexion.html.twig', array('form'=>$form));
 }
