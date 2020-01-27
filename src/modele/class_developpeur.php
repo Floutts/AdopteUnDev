@@ -11,11 +11,10 @@ class Developpeur {
     {
         $this->db = $db;
         $this->insert= $db->prepare("insert into developpeur(email, mdp, nom, prenom, idRole,NbUnique,validation) values(:email, :mdp, :nom, :prenom, :role, :NbUnique, :validation)"); ;
-        //$this->select= $db->prepare("")
-        $this->selectByEmail = $db->prepare("select email,nbUnique from developpeur d where email=:email");
+        $this->select= $db->prepare("select  `nom`, `prenom`, `email` FROM developpeur d WHERE email=:email");
+        $this->selectByEmail = $db->prepare("select email,nbUnique from developpeur d where email=:email"); // penserz a utilisé select by email pour la profil et mettre tout ce qu'on veux dedans .
         $this->update= $db->prepare("update developpeur set validation=true where email=:email ");
         $this->connect= $db->prepare("select email, mdp from developpeur where email=:email");
-
     }
 
 
@@ -34,6 +33,15 @@ class Developpeur {
             print_r($this->selectByEmail->errorInfo());
         }
         return $this->selectByEmail->fetch();
+    }
+
+    public function select($email){
+        $liste = $this->select->execute(array(':email'=>$email));
+        if ($this->select->errorCode()!=0){
+            print_r($this->select->errorInfo());
+        }
+        return $this->select->fetch();
+
     }
 
     public function update($email){

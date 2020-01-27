@@ -16,8 +16,10 @@ function actionContact($twig) {
     echo $twig->render('contact.html.twig', array());
 }
 
-function actionProfil($twig) {
-    echo $twig->render('profil.html.twig', array());
+function actionProfil($twig, $db){
+    $developpeur = new Developpeur($db);
+    $liste= $developpeur->select();
+    echo $twig->render('profil.html.twig', array('liste'=>$liste));
 }
 
 function actionConnexion($twig,$db) {
