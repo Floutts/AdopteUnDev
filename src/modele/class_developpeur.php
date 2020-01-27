@@ -5,7 +5,8 @@ class Developpeur {
     private $connect;
     private $select;
     private $selectByEmail;
-    private $update;
+    private $updateValidation;
+    private $updateMdp;
 
     public function __construct($db)
     {
@@ -13,8 +14,9 @@ class Developpeur {
         $this->insert= $db->prepare("insert into developpeur(email, mdp, nom, prenom, idRole,NbUnique,validation) values(:email, :mdp, :nom, :prenom, :role, :NbUnique, :validation)"); ;
         $this->select= $db->prepare("select  `nom`, `prenom`, `email` FROM developpeur d WHERE email=:email");
         $this->selectByEmail = $db->prepare("select email,nbUnique from developpeur d where email=:email"); // penserz a utilisé select by email pour la profil et mettre tout ce qu'on veux dedans .
-        $this->update= $db->prepare("update developpeur set validation=true where email=:email ");
+        $this->updateValidation= $db->prepare("update developpeur set validation=true where email=:email ");
         $this->connect= $db->prepare("select email, mdp from developpeur where email=:email");
+        $this->updateMdp= $db->prepare("update developpeur set mdp=:mdp where email=:email");
     }
 
 
@@ -44,11 +46,11 @@ class Developpeur {
 
     }
 
-    public function update($email){
+    public function updateValidation($email){
         $r = true;
-        $this->update->execute(array(':email'=>$email));
-        if ($this->update->errorCode()!=0){
-            print_r($this->update->errorInfo());
+        $this->updateValidation->execute(array(':email'=>$email));
+        if ($this->updateValidation->errorCode()!=0){
+            print_r($this->updateValidation->errorInfo());
             $r=false;
         }
         return $r;
@@ -60,5 +62,15 @@ class Developpeur {
             print_r($this->connect->errorInfo());
         }
         return $this -> connect -> fetch() ;
+    }
+
+    public function updateMdp($email,$mdp){
+        $r = true;
+        $this->updateMdp->execute(array(':email'=>$email,':mdp'=>$mdp));
+        if ($this->updateMdp>errorCode()!=0){
+            print_r($this->updateMdp->errorInfo());
+            $r=false;
+        }
+        return $r;
     }
 }
