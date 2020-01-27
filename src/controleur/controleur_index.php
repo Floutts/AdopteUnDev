@@ -16,10 +16,26 @@ function actionContact($twig) {
     echo $twig->render('contact.html.twig', array());
 }
 
-function actionProfil($twig, $db){
+function actionModifprofil($twig,$db){
+    $form = array();
+    $unDeveloppeur=NULL;
     $developpeur = new Developpeur($db);
-    $liste= $developpeur->select();
-    echo $twig->render('profil.html.twig', array('liste'=>$liste));
+    $unDeveloppeur = $developpeur->selectByEmail($_SESSION['login']);
+
+        echo $twig->render('modif-profil.html.twig', array());
+
+}
+
+function actionProfil($twig, $db){
+    $form = array();
+    $unDeveloppeur=NULL;
+    if (isset($_SESSION['login'])) {
+        $developpeur = new Developpeur($db);
+        $unDeveloppeur = $developpeur->selectByEmail($_SESSION['login']);
+
+    }
+
+    echo $twig->render('profil.html.twig', array('unDeveloppeur'=>$unDeveloppeur));
 }
 
 function actionConnexion($twig,$db) {
@@ -74,8 +90,9 @@ function actionInscription($twig,$db)
             $form['valide'] = false;
             $form['message'] = 'Les mots de passe sont différents';
         } else {
+            $dateInscrit=date("Y-m-d H:i:s");
             $Developpeur = new Developpeur($db);
-            $exec = $Developpeur->insert($email, password_hash($mdp, PASSWORD_DEFAULT), $role, $nom, $prenom,$nbUnique,$valide);
+            $exec = $Developpeur->insert($email, password_hash($mdp, PASSWORD_DEFAULT), $role, $nom, $prenom,$nbUnique,$valide,$dateInscrit);
             if (!$exec) {
                 $form['valide'] = false;
                 $form['message'] = 'Problème d\'insertion dans la table developpeur ';
@@ -165,3 +182,5 @@ function actionInscription($twig,$db)
         }
         echo $twig->render('validation.html.twig', array('form'=>$form));
     }
+
+

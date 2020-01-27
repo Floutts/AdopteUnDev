@@ -1,28 +1,28 @@
 {% extends "base.html.twig" %}
 {% block contenu %}
 
+   {% if unDeveloppeur is not null %}
     <div class="media" style="padding-top: 100px">
         <img src="../images/a.jpg" class="mr-3 rounded-circles"  alt="photo à changer">
         <div class="media-body">
-            <h5 class="mt-0 profil mr-3" >"Username"
-            Inscrit le ...</h5>
+            <h5 class="mt-0 profil mr-3" >Profil de {{ unDeveloppeur.nom }} {{ unDeveloppeur.prenom }}</h5>
+            <h6 class="mt-0 profil mr-3" > Vous vous êtes inscrit le : "{{ unDeveloppeur.dateInscrit }}"</h6>
+            <form>
             <table class="table ">
                 <tbody style="padding-left: 100px" >
                 <tr>
                     <th scope="row">Nom</th>
-                    <td> {% for d in liste %} {{d.nom}} {% endfor %}</td>
-
-
+                    <td>  {{ unDeveloppeur.nom }} </td>
 
                 </tr>
                 <tr>
                     <th scope="row">Prenom</th>
-                    <td>Jacob</td>
+                    <td>{{ unDeveloppeur.prenom }}</td>
 
                 </tr>
                 <tr>
                     <th scope="row">Email</th>
-                    <td>Larry</td>
+                    <td>{{ unDeveloppeur.email }}</td>
                 </tr>
                 <tr>
                     <th scope="row">Langages connus</th>
@@ -31,11 +31,15 @@
                 </tr>
                 </tbody>
             </table>
-            <button class="btn btn-lg btn-primary btn-block" type="submit" name="btModifier">Modifier mon profil</button>
+            <button class="btn btn-lg btn-primary btn-block" type="submit"  name="btModifier" > Modifier mon profil</button>
 
         </div>
     </div>
+    {%  else %}
 
+        <h5> Veuillez-vous connecter pour accéder à votre profil </h5>
+
+    {% endif %}
 
 
 {% endblock %}

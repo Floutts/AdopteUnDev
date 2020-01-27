@@ -34,8 +34,9 @@
                     Profil
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="index.php?page=profil">Afficher le profil</a>
+                    <a class="dropdown-item" href="index.php?page=profil">Afficher mon profil</a>
                     {%if session.login is defined %}
+                        <a class="dropdown-item" href="index.php?page=modif-profil">Modifer mon profil</a>
                         <a href="index.php?page=deconnexion"  class="dropdown-item">Se déconnecter</a>
                    {% else %}
                         <a href="index.php?page=connexion"  class="dropdown-item">Se connecter</a>
