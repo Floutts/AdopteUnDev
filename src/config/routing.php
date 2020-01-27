@@ -13,6 +13,8 @@ function getPage($db){
     $lesPages['maintenance'] = "actionMaintenance";
     $lesPages['deconnexion'] = "actionDeconnexion";
     $lesPages['validation'] = "actionValidation";
+    $lesPages['recupMdp'] = "actionRecup";
+    $lesPages['modifMdp'] = "actionModifMdp";
 
 
     if ($db!=null) {

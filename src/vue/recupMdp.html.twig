@@ -1,0 +1,23 @@
+{% extends "base.html.twig" %}
+{% block contenu %}
+
+    {% if form.valide is defined %}
+        {% if form.valide == false %}
+            <div class="alert alert-danger" role="alert">
+                {{ form.message }}
+            </div>
+        {% else %}
+            <div class="alert alert-success" role="alert">
+                {{ form.message }}
+            </div>
+        {% endif %}
+    {% endif%}
+
+    <form method="POST" action="index.php?page=recupMdp">
+        <div class="form-group">
+            <label for="Email">Entrez votre adresse email</label>
+            <input type="email" class="form-control" id=Email" name="Email" aria-describedby="emailHelp">
+        </div>
+        <button type="submit" class="btn btn-primary" name="btMail">Envoyer un Mail</button>
+    </form>
+    {% endblock %}
