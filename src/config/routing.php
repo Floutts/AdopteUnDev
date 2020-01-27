@@ -6,6 +6,7 @@ function getPage($db){
     $lesPages['mentions'] = "actionMentions";
     $lesPages['contact'] = "actionContact";
     $lesPages['profil'] = "actionProfil";
+    $lesPages['modif-profil'] = "actionModifprofil";
     $lesPages['connexion'] = "actionConnexion";
     $lesPages['inscription'] = "actionInscription";
     $lesPages['bd'] = "actionBd";
