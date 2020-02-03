@@ -48,10 +48,11 @@
                 <a class="nav-link" href="index.php?page=bd">Base de Données</a>
             </li>
             {%if session.login is defined %}
+                {% if session.role == 1 %}
             <li class="nav-item">
                 <a class="nav-link" href="index.php?page=ajoutLangages">Ajouter un langage</a>
             </li>
-
+                {% endif %}
                 <li class="nav-item">
                 <a class="nav-link" href="#"> {{session.login}} </a>
                 </li>
@@ -74,6 +75,7 @@
     </div>
 
     {% block MonBlock %}
+
     {% endblock %}
 
 {% endblock %}

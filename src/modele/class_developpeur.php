@@ -15,7 +15,7 @@ class Developpeur {
         $this->select= $db->prepare("select  `nom`, `prenom`, `email` FROM developpeur d WHERE email=:email");
         $this->selectByEmail = $db->prepare("select nom,prenom,email,nbUnique,dateInscrit from developpeur d where email=:email"); // penserz a utilisé select by email pour la profil et mettre tout ce qu'on veux dedans .
         $this->updateValidation= $db->prepare("update developpeur set validation=true where email=:email ");
-        $this->connect= $db->prepare("select email, mdp from developpeur where email=:email");
+        $this->connect= $db->prepare("select email, mdp ,idRole from developpeur where email=:email");
         $this->updateMdp= $db->prepare("update developpeur set mdp=:mdp where email=:email");
     }
 
