@@ -46,8 +46,6 @@ function actionConnexion($twig,$db) {
     if (isset($_POST['btConnecter'])) {
         $Email = $_POST['Email'];
         $Mdp = $_POST['Mdp'];
-        $_SESSION['login'] = $Email;
-        $_SESSION['role'] = 1;
         $developpeur = new Developpeur($db);
         $unDeveloppeur=$developpeur->connect($Email);
         if($unDeveloppeur!=null){
@@ -225,8 +223,7 @@ function actionModifMdp($twig,$db){
     $form = array();
     if (isset($_GET['email']))
         $form['email'] = $_GET['email'];
-
-    if (isset($_POST['btModif'])) {
+    elseif (isset($_POST['btModif'])) {
         $email = $_POST['Email'];
         $mdp = $_POST['Mdp'];
         $confMdp = $_POST['ConfMdp'];
@@ -236,10 +233,12 @@ function actionModifMdp($twig,$db){
             $form['message'] = 'Les mots de passe sont différents';
         } else {
             $Developpeur = new Developpeur($db);
-            $exec = $Developpeur->updateMdp($email,$mdp);
+            $exec = $Developpeur->updateMdp($email,password_hash($mdp, PASSWORD_DEFAULT));
             if (!$exec) {
                 $form['valide'] = false;
                 $form['message'] = 'Problème de changement de mot de passe ';
+            }else{
+                $form['message'] = 'Mot de passe modifié';
             }
         }
     }

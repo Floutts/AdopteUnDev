@@ -67,7 +67,7 @@ class Developpeur {
     public function updateMdp($email,$mdp){
         $r = true;
         $this->updateMdp->execute(array(':email'=>$email,':mdp'=>$mdp));
-        if ($this->updateMdp>errorCode()!=0){
+        if ($this->updateMdp->errorCode()!=0){
             print_r($this->updateMdp->errorInfo());
             $r=false;
         }
