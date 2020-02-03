@@ -4,17 +4,28 @@
 
     <form  action="index.php?page=inscription" method="post" enctype="application/x-www-form-urlencoded" >
         <div class="form-group">
+            <label for="Email">Email</label>
+            <input type="email" class="form-control" id="Email" name="Email"  aria-describedby="emailHelp" value="{{ unDeveloppeur.email }}" disabled >
+        </div>
+        <div class="form-group">
             <label for="Nom">Nom</label>
-            <input type="text" class="form-control" id="Nom"  name="Nom" value="{{ unDeveloppeur.nom }}">
+            <input type="text" class="form-control" id="Nom"  name="Nom" value=" {{ unDeveloppeur.nom }} " required>
         </div>
         <div class="form-group">
             <label for="Prenom">Prenom</label>
-            <input type="text" class="form-control" id="Prenom" name="Prenom" value="">
+            <input type="text" class="form-control" id="Prenom" name="Prenom" value="{{ unDeveloppeur.prenom }} " required>
         </div>
-        <div class="form-group">
-            <label for="Email">Email</label>
-            <input type="email" class="form-control" id="Email" name="Email"  aria-describedby="emailHelp" value="" >
-        </div>
+        <select class="form-control" name="language"  class = "sr-only">
+            <option value="1">Python </option>
+            <option value="2">Administrateur</option>
+            <option value="2">Administrateur</option>
+            <option value="2">Administrateur</option>
+            <option value="2">Administrateur</option>
+            <option value="2">Administrateur</option>
+            <option value="2">Administrateur</option>
+            <option value="2">Administrateur</option>
+
+        </select>
 
 
         <button type="submit" class="btn btn-primary" name="btModfier" id="btModifier" href="index">Modifier</button>

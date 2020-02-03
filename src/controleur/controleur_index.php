@@ -14,6 +14,10 @@ function actionMentions($twig) {
     echo $twig->render('mentions.html.twig', array());
 }
 
+function actionLangages($twig) {
+    echo $twig->render('ajoutLangages.html.twig', array());
+}
+
 function actionContact($twig) {
     echo $twig->render('contact.html.twig', array());
 }
@@ -21,10 +25,11 @@ function actionContact($twig) {
 function actionModifprofil($twig,$db){
     $form = array();
     $unDeveloppeur=NULL;
-    $developpeur = new Developpeur($db);
-    $unDeveloppeur = $developpeur->selectByEmail($_SESSION['login']);
-
-        echo $twig->render('modif-profil.html.twig', array());
+    if (isset($_SESSION['login'])) {
+        $developpeur = new Developpeur($db);
+        $unDeveloppeur = $developpeur->selectByEmail($_SESSION['login']);
+    }
+        echo $twig->render('modif-profil.html.twig', array('unDeveloppeur'=>$unDeveloppeur));
 
 }
 
@@ -46,8 +51,6 @@ function actionConnexion($twig,$db) {
     if (isset($_POST['btConnecter'])) {
         $Email = $_POST['Email'];
         $Mdp = $_POST['Mdp'];
-        $_SESSION['login'] = $Email;
-        $_SESSION['role'] = 1;
         $developpeur = new Developpeur($db);
         $unDeveloppeur=$developpeur->connect($Email);
         if($unDeveloppeur!=null){
@@ -58,6 +61,7 @@ function actionConnexion($twig,$db) {
             else{
                 $_SESSION['login'] = $Email;
                 $_SESSION['role'] = $unDeveloppeur['idRole'];
+
                 header("Location:index.php");
             }
         }
