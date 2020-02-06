@@ -5,9 +5,32 @@
     <div class="alert alert-danger" role="alert">
         {{ form.message }}
     </div>
+
+
     {% endif %}
 
+    {%  if form.renvoi is defined %}
+        {% if form.renvoi == true %}
+            <div class="alert alert-success" role="alert">
+                {{ form.message }}
+            </div>
+        {% endif %}
+        <form method="POST" action="index.php?page=connexion">
+            <div class="form-group">
+                <label for="Email">Addresse Email</label>
+                <input type="email" class="form-control" id=Email" name="Email">
+            </div>
+            <button type="submit" class="btn btn-primary" name="btRenvoiEmail">Renvoyer un email</button>
+        </form>
+    {% else %}
+
+
+
+
     <form method="POST" action="index.php?page=connexion">
+        {% if form.valideEmail is defined %}
+            <button type="submit" class="btn btn-primary" name="btRenvoi">Renvoyer un email ?</button>
+        {% endif %}
         <div class="form-group">
             <label for="Email">Email address</label>
             <input type="email" class="form-control" id=Email" name="Email" aria-describedby="emailHelp">
@@ -20,4 +43,5 @@
         <button type="submit" class="btn btn-primary" name="btConnecter">Submit</button>
         <small><a href="index.php?page=recupMdp">Mot de passe oublié ?</a></small>
     </form>
+    {% endif %}
 {% endblock %}
