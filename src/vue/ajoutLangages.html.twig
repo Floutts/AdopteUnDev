@@ -1,4 +1,33 @@
 {% extends "base.html.twig" %}
 {% block contenu %}
-    <h1> AJOUTER UN LANGAGE !!!!! </h1>
+
+    <div class="panel panel-default">  <!-- Default panel contents -->
+        <div class="panel-heading">Liste des Langages</div>
+        <!-- Table -->
+        <div class="table-responsive">
+            <table class="table table-hover table-striped">
+                <tr><th>Id</th><th>Nom</th></tr>
+
+                {% for l in liste %}
+                    <tr><td>{{l.id}}</td><td>{{l.libelle}}</td> <td> <div class="btn-group btn-group-lg"><a href="#"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a></div></td><td><div class="btn-group btn-group-lg"><a href="#"><span class="glyphicon glyphicon-trash" ariahidden="true"></span></a></div></td></tr>
+
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+
+
+    <form class="form-signin"  method="POST" action="index.php?page=ajoutLangages">
+        <h1 class="h3 mb-3 font-weight-normal">Ajoutez un langage</h1>
+        <label for="langage" class="sr-only">Nom du langage</label>
+        <input type="text" id="langage" name="langage" class="form-control" placeholder="Nom du langage" required autofocus>
+        <button class="btn btn-lg btn-primary btn-block" type="submit" name="btAjouterLang"> Ajouter </button>
+    </form>
+
+
+
+
+
+
+
 {% endblock %}

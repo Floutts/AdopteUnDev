@@ -1,8 +1,7 @@
 <?php
 
 function actionAccueil($twig) {
-    //var_dump($_SERVER);
-
+        var_dump($_SESSION);
     echo $twig->render('index.html.twig', array());
 }
 
@@ -14,8 +13,18 @@ function actionMentions($twig) {
     echo $twig->render('mentions.html.twig', array());
 }
 
-function actionLangages($twig) {
-    echo $twig->render('ajoutLangages.html.twig', array());
+function actionLangages($twig,$db) {
+    $form = array();
+    $langage = new Langage($db);
+    if (isset($_POST['btAjouterLang'])) {
+        $libelle = $_POST['langage'];
+        $form['libelle'] = $libelle ;
+        $exec = $langage->insert($libelle);
+
+    }
+
+    $liste = $langage -> select();
+        echo $twig->render('ajoutLangages.html.twig', array('form' => $form, 'liste' => $liste));
 }
 
 function actionContact($twig) {
@@ -25,11 +34,13 @@ function actionContact($twig) {
 function actionModifprofil($twig,$db){
     $form = array();
     $unDeveloppeur=NULL;
+    $langage = new Langage($db);
     if (isset($_SESSION['login'])) {
         $developpeur = new Developpeur($db);
         $unDeveloppeur = $developpeur->selectByEmail($_SESSION['login']);
+        $liste = $langage -> select();
     }
-        echo $twig->render('modif-profil.html.twig', array('unDeveloppeur'=>$unDeveloppeur));
+        echo $twig->render('modif-profil.html.twig', array('unDeveloppeur'=>$unDeveloppeur, 'liste' => $liste));
 
 }
 
@@ -53,6 +64,7 @@ function actionConnexion($twig,$db) {
         $Mdp = $_POST['Mdp'];
         $developpeur = new Developpeur($db);
         $unDeveloppeur=$developpeur->connect($Email);
+
         if($unDeveloppeur!=null){
             if(!password_verify($Mdp,$unDeveloppeur['mdp'])){
                 $form['valide']=false;
@@ -72,7 +84,7 @@ function actionConnexion($twig,$db) {
 
                     header("Location:index.php");
                 }
-
+                
             }
         }
         else{
@@ -270,7 +282,8 @@ function actionModifMdp($twig,$db){
     $form = array();
     if (isset($_GET['email']))
         $form['email'] = $_GET['email'];
-    elseif (isset($_POST['btModif'])) {
+
+    if (isset($_POST['btModif'])) {
         $email = $_POST['Email'];
         $mdp = $_POST['Mdp'];
         $confMdp = $_POST['ConfMdp'];
@@ -280,12 +293,10 @@ function actionModifMdp($twig,$db){
             $form['message'] = 'Les mots de passe sont différents';
         } else {
             $Developpeur = new Developpeur($db);
-            $exec = $Developpeur->updateMdp($email,password_hash($mdp, PASSWORD_DEFAULT));
+            $exec = $Developpeur->updateMdp($email,$mdp);
             if (!$exec) {
                 $form['valide'] = false;
                 $form['message'] = 'Problème de changement de mot de passe ';
-            }else{
-                $form['message'] = 'Mot de passe modifié';
             }
         }
     }

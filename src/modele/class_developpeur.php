@@ -15,7 +15,7 @@ class Developpeur {
         $this->select= $db->prepare("select  `nom`, `prenom`, `email` FROM developpeur d WHERE email=:email");
         $this->selectByEmail = $db->prepare("select nom,prenom,email,nbUnique,dateInscrit,validation from developpeur d where email=:email"); // penserz a utilisé select by email pour la profil et mettre tout ce qu'on veux dedans .
         $this->updateValidation= $db->prepare("update developpeur set validation=true where email=:email ");
-        $this->connect= $db->prepare("select email, mdp from developpeur where email=:email");
+        $this->connect= $db->prepare("select email, mdp ,idRole from developpeur where email=:email");
         $this->updateMdp= $db->prepare("update developpeur set mdp=:mdp where email=:email");
     }
 
@@ -57,7 +57,7 @@ class Developpeur {
     }
 
     public function connect($email){
-        $this->connect->execute(array(':email'=>$email));
+        $unDeveloppeur= $this->connect->execute(array(':email'=>$email));
         if ($this->connect->errorCode()!=0){
             print_r($this->connect->errorInfo());
         }
@@ -67,7 +67,7 @@ class Developpeur {
     public function updateMdp($email,$mdp){
         $r = true;
         $this->updateMdp->execute(array(':email'=>$email,':mdp'=>$mdp));
-        if ($this->updateMdp->errorCode()!=0){
+        if ($this->updateMdp>errorCode()!=0){
             print_r($this->updateMdp->errorInfo());
             $r=false;
         }
