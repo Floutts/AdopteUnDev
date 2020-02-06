@@ -15,17 +15,17 @@
             <label for="Prenom">Prenom</label>
             <input type="text" class="form-control" id="Prenom" name="Prenom" value="{{ unDeveloppeur.prenom }} " required>
         </div>
-        <select class="form-control" name="language"  class = "sr-only">
-            <option value="1">Python </option>
-            <option value="2">Administrateur</option>
-            <option value="2">Administrateur</option>
-            <option value="2">Administrateur</option>
-            <option value="2">Administrateur</option>
-            <option value="2">Administrateur</option>
-            <option value="2">Administrateur</option>
-            <option value="2">Administrateur</option>
+            {% for l in liste %}
+        <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                <label class="form-check-label" for="defaultCheck1">
+                    {{ l.libelle }}
+                </label>
+        </div>
 
-        </select>
+            {% endfor %}
+
+
 
 
         <button type="submit" class="btn btn-primary" name="btModfier" id="btModifier" href="index">Modifier</button>
