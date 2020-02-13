@@ -12,6 +12,7 @@ class Langage
         $this->db = $db;
         $this->insert = $db->prepare("insert into langage(libelle) VALUES (:libelle)");
         $this->select = $db->prepare("SELECT id, libelle FROM langage l order by libelle ");
+
     }
 
     public function insert($libelle)

@@ -13,9 +13,9 @@ class Developpeur {
         $this->db = $db;
         $this->insert= $db->prepare("insert into developpeur(email, mdp, nom, prenom, idRole,NbUnique,validation,dateInscrit) values(:email, :mdp, :nom, :prenom, :role, :NbUnique, :validation, :dateInscrit)"); ;
         $this->select= $db->prepare("select  `nom`, `prenom`, `email` FROM developpeur d WHERE email=:email");
-        $this->selectByEmail = $db->prepare("select nom,prenom,email,nbUnique,dateInscrit,validation from developpeur d where email=:email"); // penserz a utilisé select by email pour la profil et mettre tout ce qu'on veux dedans .
+        $this->selectByEmail = $db->prepare("select nom,prenom,email,nbUnique,dateInscrit,validation,id from developpeur d where email=:email"); // penserz a utilisé select by email pour la profil et mettre tout ce qu'on veux dedans .
         $this->updateValidation= $db->prepare("update developpeur set validation=true where email=:email ");
-        $this->connect= $db->prepare("select email, mdp ,idRole from developpeur where email=:email");
+        $this->connect= $db->prepare("select email, mdp ,idRole, validation from developpeur where email=:email");
         $this->updateMdp= $db->prepare("update developpeur set mdp=:mdp where email=:email");
     }
 
@@ -57,7 +57,7 @@ class Developpeur {
     }
 
     public function connect($email){
-        $unDeveloppeur= $this->connect->execute(array(':email'=>$email));
+        $this->connect->execute(array(':email'=>$email));
         if ($this->connect->errorCode()!=0){
             print_r($this->connect->errorInfo());
         }

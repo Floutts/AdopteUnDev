@@ -2,7 +2,7 @@
 {% block contenu %}
 
 
-    <form  action="index.php?page=inscription" method="post" enctype="application/x-www-form-urlencoded" >
+    <form  action="index.php?page=modif-profil" method="post" enctype="application/x-www-form-urlencoded" >
         <div class="form-group">
             <label for="Email">Email</label>
             <input type="email" class="form-control" id="Email" name="Email"  aria-describedby="emailHelp" value="{{ unDeveloppeur.email }}" disabled >
@@ -17,18 +17,15 @@
         </div>
             {% for l in liste %}
         <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                <label class="form-check-label" for="defaultCheck1">
+        <input class="form-check-input" type="checkbox" value="{{ l.id }}" id="langage[]" name="langage[]">
+                <label class="form-check-label" for="langage[]">
                     {{ l.libelle }}
                 </label>
         </div>
 
             {% endfor %}
 
-
-
-
-        <button type="submit" class="btn btn-primary" name="btModfier" id="btModifier" href="index">Modifier</button>
+        <button type="submit" class="btn btn-primary" name="btModifier" id="btModifier" href="index">Modifier</button>
     </form>
 
 {% endblock %}
