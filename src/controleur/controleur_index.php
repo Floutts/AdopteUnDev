@@ -35,11 +35,30 @@ function actionModifprofil($twig,$db){
     $form = array();
     $unDeveloppeur=NULL;
     $langage = new Langage($db);
+    $code = new Code($db);
     if (isset($_SESSION['login'])) {
         $developpeur = new Developpeur($db);
         $unDeveloppeur = $developpeur->selectByEmail($_SESSION['login']);
         $liste = $langage -> select();
+        var_dump($_POST);
+        if (isset($_POST['btModifier'])){
+            $idDev = $unDeveloppeur['id'];
+            $langageConnu = $_POST['langage'] ;
+            $form['valide']=true;
+            foreach ($langageConnu as $idLang){
+                echo $idDev.' '.$idLang;
+                $unLangage = $code ->selectByDev($idLang,$idDev);
+                if ($unLangage == NULL){
+                    $exec = $code->insertLangage($idDev, $idLang);
+                    if (!$exec) {
+                        $form['valide'] = false;
+                        $form['message'] = "problème d'insertion dans la table";
+                    }
+                }
+            }
+        }
     }
+
         echo $twig->render('modif-profil.html.twig', array('unDeveloppeur'=>$unDeveloppeur, 'liste' => $liste));
 
 }
@@ -71,7 +90,6 @@ function actionConnexion($twig,$db) {
                 $form['message']='Login ou mot de passe incorrect';
             }
             else{
-                $unDeveloppeur=$developpeur->selectByEmail($Email);
                 if ($unDeveloppeur['validation'] == 0){
 
                     $form['valide']=false;
@@ -81,7 +99,7 @@ function actionConnexion($twig,$db) {
                 }else{
                     $_SESSION['login'] = $Email;
                     $_SESSION['role'] = $unDeveloppeur['idRole'];
-
+                   // var_dump($unDeveloppeur);
                     header("Location:index.php");
                 }
 

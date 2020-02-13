@@ -38,6 +38,7 @@ CREATE TABLE `code` (
 
 LOCK TABLES `code` WRITE;
 /*!40000 ALTER TABLE `code` DISABLE KEYS */;
+INSERT INTO `code` VALUES (6,9),(30,12),(30,11),(30,10),(30,1),(30,9);
 /*!40000 ALTER TABLE `code` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -60,9 +61,9 @@ CREATE TABLE `developpeur` (
   `dateInscrit` datetime NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`),
-  KEY `idRole` (`idRole`)
+  KEY `idRole` (`idRole`),
+  CONSTRAINT `developpeur_ibfk_1` FOREIGN KEY (`idRole`) REFERENCES `role` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4;
-
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -86,7 +87,7 @@ CREATE TABLE `langage` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `libelle` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -95,6 +96,7 @@ CREATE TABLE `langage` (
 
 LOCK TABLES `langage` WRITE;
 /*!40000 ALTER TABLE `langage` DISABLE KEYS */;
+INSERT INTO `langage` VALUES (1,'python'),(9,'PYTHON'),(10,'PYTHON'),(11,'php c la vie'),(12,'php c la vie'),(15,'lnaguafe');
 /*!40000 ALTER TABLE `langage` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -109,7 +111,7 @@ CREATE TABLE `role` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `libelle` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -131,4 +133,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-02-03  7:34:01
+-- Dump completed on 2020-02-13 10:34:20
