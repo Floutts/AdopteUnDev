@@ -10,14 +10,20 @@
     {% endif %}
 
     {%  if form.renvoi is defined %}
-        {% if form.renvoi == true %}
-            <div class="alert alert-success" role="alert">
-                {{ form.message }}
-            </div>
+        {% if form.EmailValide is defined %}
+            {% if form.EmailValide == true %}
+                <div class="alert alert-success" role="alert">
+                    {{ form.message }}
+                </div>
+            {% elseif form.EmailValide == false %}
+                <div class="alert alert-danger" role="alert">
+                    {{ form.message }}
+                </div>
+            {% endif %}
         {% endif %}
         <form method="POST" action="index.php?page=connexion">
             <div class="form-group">
-                <label for="Email">Addresse Email</label>
+                <label for="Email">Adresse Email</label>
                 <input type="email" class="form-control" id=Email" name="Email">
             </div>
             <button type="submit" class="btn btn-primary" name="btRenvoiEmail">Renvoyer un email</button>

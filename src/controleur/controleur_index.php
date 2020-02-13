@@ -84,7 +84,7 @@ function actionConnexion($twig,$db) {
 
                     header("Location:index.php");
                 }
-                
+
             }
         }
         else{
@@ -99,12 +99,14 @@ function actionConnexion($twig,$db) {
         $Email = $_POST['Email'];
         $developpeur = new Developpeur($db);
         $unDeveloppeur=$developpeur->selectByEmail($Email);
-        $email = $unDeveloppeur['email'];
-        $nbUnique = $unDeveloppeur['nbUnique'];
+        if ($unDeveloppeur != NULL) {
 
-        $serveur = $_SERVER['HTTP_HOST'];
-        $script = $_SERVER["SCRIPT_NAME"];
-        $message = "
+            $email = $unDeveloppeur['email'];
+            $nbUnique = $unDeveloppeur['nbUnique'];
+
+            $serveur = $_SERVER['HTTP_HOST'];
+            $script = $_SERVER["SCRIPT_NAME"];
+            $message = "
             <html>
                 <head>
                 </head>
@@ -112,15 +114,19 @@ function actionConnexion($twig,$db) {
                 Bienvenue sur AdopteUnDev, Pour confirmer votre inscription, veuillez cliquer sur le lien ci contre           
                 <a href=http://$serveur$script?page=validation&email=$email&nbUnique=$nbUnique'>Valider votre inscription</a>
                 </body>
-            </html>"
-        ;
-        $headers[] = 'MIME-Version: 1.0';
-        $headers[] = 'Content-type: text/html; charset=iso-8859-1';
-        //$message = wordwrap($message, 70, "\r\n");
-        mail($email, 'Inscription AdopteUnDev', $message, implode("\n",$headers));
-        $form['renvoi']=true;
-        $form['message']= "Un mail a été renvoyé";
-
+            </html>";
+            $headers[] = 'MIME-Version: 1.0';
+            $headers[] = 'Content-type: text/html; charset=iso-8859-1';
+            //$message = wordwrap($message, 70, "\r\n");
+            mail($email, 'Inscription AdopteUnDev', $message, implode("\n", $headers));
+            $form['renvoi'] = false;
+            $form['EmailValide'] = true;
+            $form['message'] = "Un mail a été renvoyé";
+        } else{
+            $form['renvoi'] = false;
+            $form['EmailValide'] = false;
+            $form['message'] = "Vous n'êtes pas inscrit, veuillez vous inscrire";
+        }
     }
 
         echo $twig->render('connexion.html.twig', array('form'=>$form));
