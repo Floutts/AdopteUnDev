@@ -9,27 +9,34 @@ function actionModifprofil($twig,$db){
         $developpeur = new Developpeur($db);
         $unDeveloppeur = $developpeur->selectByEmail($_SESSION['login']);
         $liste = $langage -> select();
-        var_dump($_POST);
         if (isset($_POST['btModifier'])){
             $idDev = $unDeveloppeur['id'];
-            $langageConnu = $_POST['langage'] ;
+            if(isset($_POST['langage'])){
+                $langageConnu = $_POST['langage'] ;
+
+            }else{
+                $langageConnu = NULL;
+            }
             $form['valide']=true;
             $exec = $code->delete($idDev);
             if (!$exec){
                 $form['valide'] = false;
                 $form['message'] = "problème d'insertion dans la table";
             }
-            foreach ($langageConnu as $idLang){
-                echo $idDev.' '.$idLang;
-                $unLangage = $code ->selectByDev($idLang,$idDev);
-                if ($unLangage == NULL){
-                    $exec = $code->insertLangage($idDev, $idLang);
-                    if (!$exec) {
-                        $form['valide'] = false;
-                        $form['message'] = "problème d'insertion dans la table";
+            if($langageConnu != NULL){
+                foreach ($langageConnu as $idLang){
+                    echo $idDev.' '.$idLang;
+                    $unLangage = $code ->selectByDev($idLang,$idDev);
+                    if ($unLangage == NULL){
+                        $exec = $code->insertLangage($idDev, $idLang);
+                        if (!$exec) {
+                            $form['valide'] = false;
+                            $form['message'] = "problème d'insertion dans la table";
+                        }
                     }
                 }
             }
+
             if ($form['valide'] != false){
                 $form['valide'] = true;
                 $form['message'] = "Modification reussi";
