@@ -7,7 +7,7 @@
         <div class="media-body">
             <h5 class="mt-0 profil mr-3" >Profil de {{ unDeveloppeur.nom }} {{ unDeveloppeur.prenom }}</h5>
             <h6 class="mt-0 profil mr-3" > Vous vous êtes inscrit le : "{{ unDeveloppeur.dateInscrit }}"</h6>
-            <form>
+            <form action="index.php?page=modif-profil" method="post" enctype="application/x-www-form-urlencoded">
             <table class="table ">
                 <tbody style="padding-left: 100px" >
                 <tr>
@@ -32,7 +32,7 @@
                 </tbody>
             </table>
             <button class="btn btn-lg btn-primary btn-block" type="submit"  name="btModifier" > Modifier mon profil</button>
-
+            </form>
         </div>
     </div>
     {%  else %}
