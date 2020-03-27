@@ -72,7 +72,7 @@ function actionProfil($twig, $db){
 
     }
 
-    echo $twig->render('profil.html.twig', array('unDeveloppeur'=>$unDeveloppeur));
+    echo $twig->render('profil.html.twig', array('u'=>$unDeveloppeur));
 }
 
 function actionConnexion($twig,$db) {
