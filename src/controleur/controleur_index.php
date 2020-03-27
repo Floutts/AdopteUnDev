@@ -45,6 +45,11 @@ function actionModifprofil($twig,$db){
             $idDev = $unDeveloppeur['id'];
             $langageConnu = $_POST['langage'] ;
             $form['valide']=true;
+            $exec = $code->delete($idDev);
+            if (!$exec){
+                $form['valide'] = false;
+                $form['message'] = "problème d'insertion dans la table";
+            }
             foreach ($langageConnu as $idLang){
                 echo $idDev.' '.$idLang;
                 $unLangage = $code ->selectByDev($idLang,$idDev);
@@ -55,6 +60,11 @@ function actionModifprofil($twig,$db){
                         $form['message'] = "problème d'insertion dans la table";
                     }
                 }
+            }
+            if ($form['valide'] != false){
+                $form['valide'] = true;
+                $form['message'] = "Modification reussi";
+
             }
         }
     }
@@ -91,7 +101,6 @@ function actionConnexion($twig,$db) {
             }
             else{
                 if ($unDeveloppeur['validation'] == 0){
-
                     $form['valide']=false;
                     $form['valideEmail']=false;
                     $form['message']="Votre email n'a pas été vérifié";
