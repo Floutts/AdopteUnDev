@@ -126,6 +126,7 @@ function actionConnexion($twig,$db) {
         $Email = $_POST['Email'];
         $developpeur = new Developpeur($db);
         $unDeveloppeur=$developpeur->selectByEmail($Email);
+        var_dump($unDeveloppeur);
         if ($unDeveloppeur != NULL) {
 
             $email = $unDeveloppeur['email'];
@@ -139,7 +140,7 @@ function actionConnexion($twig,$db) {
                 </head>
                 <body>
                 Bienvenue sur AdopteUnDev, Pour confirmer votre inscription, veuillez cliquer sur le lien ci contre           
-                <a href=http://$serveur$script?page=validation&email=$email&nbUnique=$nbUnique'>Valider votre inscription</a>
+                <a href='http://$serveur$script?page=validation&email=$email&nbUnique=$nbUnique'>Valider votre inscription</a>
                 </body>
             </html>";
             $headers[] = 'MIME-Version: 1.0';
@@ -178,6 +179,7 @@ function actionInscription($twig,$db)
         $role = $_POST['Role'];
         $valide = false;
         $form['valide'] = true;
+        var_dump($nbUnique);
         if ($mdp != $confMdp) {
             $form['valide'] = false;
             $form['message'] = 'Les mots de passe sont différents';
@@ -197,7 +199,7 @@ function actionInscription($twig,$db)
                 </head>
                 <body>
                 Bienvenue sur AdopteUnDev, Pour confirmer votre inscription, veuillez cliquer sur le lien ci contre           
-                <a href=http://$serveur$script?page=validation&email=$email&nbUnique=$nbUnique'>Valider votre inscription</a>
+                <a href='http://$serveur$script?page=validation&email=$email&nbUnique=$nbUnique'>Valider votre inscription</a>
                 </body>
             </html>"
              ;
