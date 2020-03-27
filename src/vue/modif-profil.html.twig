@@ -1,7 +1,7 @@
 {% extends "base.html.twig" %}
 {% block contenu %}
 
-
+ 
     <form  action="index.php?page=modif-profil" method="post" enctype="application/x-www-form-urlencoded" >
         <div class="form-group">
             <label for="Email">Email</label>
@@ -15,15 +15,17 @@
             <label for="Prenom">Prenom</label>
             <input type="text" class="form-control" id="Prenom" name="Prenom" value="{{ unDeveloppeur.prenom }} " required>
         </div>
-            {% for l in liste %}
-        <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="{{ l.id }}" id="langage[]" name="langage[]">
-                <label class="form-check-label" for="langage[]">
-                    {{ l.libelle }}
-                </label>
+        <h5> Langage</h5>
+        {% for l in liste %}
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <div class="input-group-text">
+                    <input type="checkbox" aria-label="Checkbox for following text input" value="{{ l.id }}" id="langage[]" name="langage[]">
+                </div>
+            </div>
+            <input type="text" class="form-control" aria-label="Text input with checkbox" value="{{ l.libelle }}">
         </div>
-
-            {% endfor %}
+        {% endfor %}
 
         <button type="submit" class="btn btn-primary" name="btModifier" id="btModifier" href="index">Modifier</button>
     </form>

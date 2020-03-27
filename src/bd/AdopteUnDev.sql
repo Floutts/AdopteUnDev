@@ -38,7 +38,7 @@ CREATE TABLE `code` (
 
 LOCK TABLES `code` WRITE;
 /*!40000 ALTER TABLE `code` DISABLE KEYS */;
-INSERT INTO `code` VALUES (6,9),(30,12),(30,11),(30,10),(30,1),(30,9);
+INSERT INTO `code` VALUES (6,9);
 /*!40000 ALTER TABLE `code` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -63,7 +63,7 @@ CREATE TABLE `developpeur` (
   UNIQUE KEY `email` (`email`),
   KEY `idRole` (`idRole`),
   CONSTRAINT `developpeur_ibfk_1` FOREIGN KEY (`idRole`) REFERENCES `role` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -72,7 +72,7 @@ CREATE TABLE `developpeur` (
 
 LOCK TABLES `developpeur` WRITE;
 /*!40000 ALTER TABLE `developpeur` DISABLE KEYS */;
-INSERT INTO `developpeur` VALUES (2,'alphonse','gluiglui','a.g@fr','$2y$10$/63RwuPjVbSMGlVNFbBQCuwSt0Dg1oH7o6739cXzmVJgSp4nMYkSO','5e20393176315',2,0,'0000-00-00 00:00:00'),(4,'Jean','Bon','Jambon@gmail.com','$2y$10$cgS1xLhjZlFecBaQfIxbNug4NQAx/G2fvGoBhFwPIfTAH5I5Xhwae','5e26adabc2500',2,0,'0000-00-00 00:00:00'),(6,'Harry','Cauvert','Haricot.vert@gmail.com','$2y$10$Expnrsv0tfOMLotGgZdS3ONpBJIlJkQ81oYW8klm69Tw0TQ8fILXy','5e26af2ed620f',2,0,'0000-00-00 00:00:00'),(30,'Bayon','fabien','fabienbayon@yahoo.fr','$2y$10$IGctYnaXTt4VPZmZYr5LR.hSNcqs/JI2MrYEnpsJkxNvkp51m6loG','5e2eb3b832810',1,1,'2020-01-27 09:56:08');
+INSERT INTO `developpeur` VALUES (2,'alphonse','gluiglui','a.g@fr','$2y$10$/63RwuPjVbSMGlVNFbBQCuwSt0Dg1oH7o6739cXzmVJgSp4nMYkSO','5e20393176315',2,0,'0000-00-00 00:00:00'),(4,'Jean','Bon','Jambon@gmail.com','$2y$10$cgS1xLhjZlFecBaQfIxbNug4NQAx/G2fvGoBhFwPIfTAH5I5Xhwae','5e26adabc2500',2,0,'0000-00-00 00:00:00'),(6,'Harry','Cauvert','Haricot.vert@gmail.com','$2y$10$Expnrsv0tfOMLotGgZdS3ONpBJIlJkQ81oYW8klm69Tw0TQ8fILXy','5e26af2ed620f',2,0,'0000-00-00 00:00:00'),(32,'Bayon','fabien','fabienbayon@yahoo.fr','$2y$10$WgboMXoVFQlESFJpFB/GBe6eOBTYiF/VsQf/DWeO8dEH30aYnLSVK','5e7db6356f379',1,1,'2020-03-27 08:15:49');
 /*!40000 ALTER TABLE `developpeur` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -133,4 +133,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-02-13 10:34:20
+-- Dump completed on 2020-03-27  8:49:20
