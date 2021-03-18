@@ -85,10 +85,13 @@ function actionModifMdp($twig, $db)
             $form['message'] = 'Les mots de passe sont différents';
         } else {
             $Developpeur = new Developpeur($db);
-            $exec = $Developpeur->updateMdp($email, $mdp);
+            $exec = $Developpeur->updateMdp($email, password_hash($mdp, PASSWORD_DEFAULT));
             if (!$exec) {
                 $form['valide'] = false;
                 $form['message'] = 'Problème de changement de mot de passe ';
+            } else{
+                $form['valide'] = true;
+                $form['message'] = 'Votre mot de passe a bien été modifié';
             }
         }
     }

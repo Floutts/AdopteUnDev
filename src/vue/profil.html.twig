@@ -3,8 +3,11 @@
 
    {% if unDeveloppeur is not null %}
     <div class="media" style="padding-top: 100px">
-        <img src="../images/a.jpg" class="mr-3 rounded-circles"  alt="photo à changer">
-        <div class="media-body">
+        <div class="row">
+        <div class="col-md-4">
+            <img src="images/imageBase.png" class="mr-3 rounded-circles col-md-10"  alt="photo à changer">
+        </div>
+        <div class="media-body col-md-8">
             <h5 class="mt-0 profil mr-3" >Profil de {{ unDeveloppeur.nom }} {{ unDeveloppeur.prenom }}</h5>
             <h6 class="mt-0 profil mr-3" > Vous vous êtes inscrit le : "{{ unDeveloppeur.dateInscrit }}"</h6>
             <form action="index.php?page=modif-profil" method="post" enctype="application/x-www-form-urlencoded">
@@ -33,6 +36,7 @@
             </table>
             <button class="btn btn-lg btn-primary btn-block" type="submit"  name="btModifier" > Modifier mon profil</button>
             </form>
+        </div>
         </div>
     </div>
     {%  else %}
