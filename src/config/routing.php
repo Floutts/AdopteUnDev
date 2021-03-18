@@ -15,7 +15,8 @@ function getPage($db){
     $lesPages['validation'] = "actionValidation;0";
     $lesPages['recupMdp'] = "actionRecup;0";
     $lesPages['modifMdp'] = "actionModifMdp;0";
-    $lesPages['ajoutLangages'] = "actionLangages;1";
+    $lesPages['ajoutLangages'] = "actionAjoutLangages;1";
+    $lesPages['langages'] = "actionLangages;0";
 
 
     if ($db != null) {

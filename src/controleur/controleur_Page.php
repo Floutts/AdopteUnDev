@@ -17,7 +17,7 @@ function actionMentions($twig)
     echo $twig->render('mentions.html.twig', array());
 }
 
-function actionLangages($twig, $db)
+function actionAjoutLangages($twig, $db)
 {
     $form = array();
     $langage = new Langage($db);
