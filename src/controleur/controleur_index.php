@@ -4,6 +4,7 @@ require_once 'controleur_Inscription.php';
 require_once 'controleur_Page.php';
 require_once 'controleur_Profil.php';
 require_once 'controleur_api.php';
+require_once 'controleur_Language.php';
 
 
 
