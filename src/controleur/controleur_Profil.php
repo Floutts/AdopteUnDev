@@ -26,7 +26,7 @@ function actionModifprofil($twig,$db){
             if($langageConnu != NULL){
                 foreach ($langageConnu as $idLang){
                     echo $idDev.' '.$idLang;
-                    $unLangage = $code ->selectByDev($idLang,$idDev);
+                    $unLangage = $code->selectByDev($idLang,$idDev);
                     if ($unLangage == NULL){
                         $exec = $code->insertLangage($idDev, $idLang);
                         if (!$exec) {
@@ -39,10 +39,14 @@ function actionModifprofil($twig,$db){
 
             if ($form['valide'] != false){
                 $form['valide'] = true;
-                $form['message'] = "Modification reussi";
+                $form['message'] = "Modification reussie";
 
+         
             }
+            header("Location: index.php?page=profil");
         }
+
+    
     }
 
     echo $twig->render('modif-profil.html.twig', array('unDeveloppeur'=>$unDeveloppeur, 'liste' => $liste));
@@ -53,12 +57,15 @@ function actionModifprofil($twig,$db){
 function actionProfil($twig, $db){
     $form = array();
     $unDeveloppeur=NULL;
+
     if (isset($_SESSION['login'])) {
         $developpeur = new Developpeur($db);
+        $langage = new Langage($db);
+        $listeLangage = $langage->selectByDev($_SESSION['login']);
         $unDeveloppeur = $developpeur->selectByEmail($_SESSION['login']);
 
     }
 
-    echo $twig->render('profil.html.twig', array('unDeveloppeur'=>$unDeveloppeur));
+    echo $twig->render('profil.html.twig', array('unDeveloppeur'=>$unDeveloppeur, 'listeLangage'=>$listeLangage));
 }
 

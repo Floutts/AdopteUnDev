@@ -17,21 +17,6 @@ function actionMentions($twig)
     echo $twig->render('mentions.html.twig', array());
 }
 
-function actionLangages($twig, $db)
-{
-    $form = array();
-    $langage = new Langage($db);
-    if (isset($_POST['btAjouterLang'])) {
-        $libelle = $_POST['langage'];
-        $form['libelle'] = $libelle;
-        $exec = $langage->insert($libelle);
-
-    }
-
-    $liste = $langage->select();
-    echo $twig->render('ajoutLangages.html.twig', array('form' => $form, 'liste' => $liste));
-}
-
 function actionContact($twig)
 {
     echo $twig->render('contact.html.twig', array());

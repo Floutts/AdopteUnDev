@@ -16,6 +16,7 @@ function getPage($db){
     $lesPages['recupMdp'] = "actionRecup;0";
     $lesPages['modifMdp'] = "actionModifMdp;0";
     $lesPages['ajoutLangages'] = "actionLangages;1";
+    
 
 
     if ($db != null) {

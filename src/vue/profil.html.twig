@@ -29,12 +29,16 @@
                 </tr>
                 <tr>
                     <th scope="row">Langages connus</th>
-                    <td> Python , php </td>
+                    <td> {% for l in listeLangage %}
+                    {{ l.libelle }} ;
+                    
+                    {% endfor %}
+                    </td>
 
                 </tr>
                 </tbody>
             </table>
-            <button class="btn btn-lg btn-primary btn-block" type="submit"  name="btModifier" > Modifier mon profil</button>
+            <button class="btn btn-lg btn-primary btn-block" type="submit"  name="btModifierProfil" > Modifier mon profil</button>
             </form>
         </div>
         </div>
