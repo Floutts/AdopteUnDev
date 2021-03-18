@@ -13,7 +13,7 @@ function actionInscription($twig,$db)
         $nom = $_POST['Nom'];
         $prenom = $_POST['Prenom'];
         $role = $_POST['Role'];
-        $valide = false;
+        $valide = 0;
         $form['valide'] = true;
         if ($mdp != $confMdp) {
             $form['valide'] = false;
@@ -32,7 +32,7 @@ function actionInscription($twig,$db)
             <html>
                 <head>
                 </head>
-                <body
+                <body>
                 Bienvenue sur AdopteUnDev, Pour confirmer votre inscription, veuillez cliquer sur le lien ci contre           
                 <a href='http://$serveur$script?page=validation&email=$email&nbUnique=$nbUnique'>Valider votre inscription</a>
                 </body>
