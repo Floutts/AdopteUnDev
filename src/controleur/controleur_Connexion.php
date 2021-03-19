@@ -51,7 +51,7 @@ function actionConnexion($twig,$db) {
                 </head>
                 <body>
                 Bienvenue sur AdopteUnDev, Pour confirmer votre inscription, veuillez cliquer sur le lien ci contre           
-                <a href=http://$serveur$script?page=validation&email=$email&nbUnique=$nbUnique'>Valider votre inscription</a>
+                <a href='http://$serveur$script?page=validation&email=$email&nbUnique=$nbUnique'>Valider votre inscription</a>
                 </body>
             </html>"
         ;
