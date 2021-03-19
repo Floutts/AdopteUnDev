@@ -55,7 +55,9 @@ CREATE TABLE `developpeur` (
   `prenom` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `mdp` varchar(100) NOT NULL,
-  `NbUnique` varchar(13) NOT NULL,
+  `codeDepartement` int(11) NOT NULL,
+  `codeCommune` int(11) NOT NULL,
+  `nbUnique` varchar(13) NOT NULL,
   `idRole` int(11) NOT NULL,
   `validation` tinyint(1) NOT NULL,
   `dateInscrit` datetime NOT NULL,
@@ -63,7 +65,7 @@ CREATE TABLE `developpeur` (
   UNIQUE KEY `email` (`email`),
   KEY `idRole` (`idRole`),
   CONSTRAINT `developpeur_ibfk_1` FOREIGN KEY (`idRole`) REFERENCES `role` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -72,7 +74,7 @@ CREATE TABLE `developpeur` (
 
 LOCK TABLES `developpeur` WRITE;
 /*!40000 ALTER TABLE `developpeur` DISABLE KEYS */;
-INSERT INTO `developpeur` VALUES (2,'alphonse','gluiglui','a.g@fr','$2y$10$/63RwuPjVbSMGlVNFbBQCuwSt0Dg1oH7o6739cXzmVJgSp4nMYkSO','5e20393176315',2,0,'0000-00-00 00:00:00'),(4,'Jean','Bon','Jambon@gmail.com','$2y$10$cgS1xLhjZlFecBaQfIxbNug4NQAx/G2fvGoBhFwPIfTAH5I5Xhwae','5e26adabc2500',2,0,'0000-00-00 00:00:00'),(6,'Harry','Cauvert','Haricot.vert@gmail.com','$2y$10$Expnrsv0tfOMLotGgZdS3ONpBJIlJkQ81oYW8klm69Tw0TQ8fILXy','5e26af2ed620f',2,0,'0000-00-00 00:00:00'),(32,'Bayon','fabien','fabienbayon@yahoo.fr','$2y$10$WgboMXoVFQlESFJpFB/GBe6eOBTYiF/VsQf/DWeO8dEH30aYnLSVK','5e7db6356f379',1,1,'2020-03-27 08:15:49');
+INSERT INTO `developpeur` VALUES (2,'alphonse','gluiglui','a.g@fr','$2y$10$/63RwuPjVbSMGlVNFbBQCuwSt0Dg1oH7o6739cXzmVJgSp4nMYkSO',0,0,'5e20393176315',2,0,'0000-00-00 00:00:00'),(4,'Jean','Bon','Jambon@gmail.com','$2y$10$cgS1xLhjZlFecBaQfIxbNug4NQAx/G2fvGoBhFwPIfTAH5I5Xhwae',0,0,'5e26adabc2500',2,0,'0000-00-00 00:00:00'),(6,'Harry','Cauvert','Haricot.vert@gmail.com','$2y$10$Expnrsv0tfOMLotGgZdS3ONpBJIlJkQ81oYW8klm69Tw0TQ8fILXy',0,0,'5e26af2ed620f',2,0,'0000-00-00 00:00:00'),(32,'Bayon','fabien','fabienbayon@yahoo.fr','$2y$10$WgboMXoVFQlESFJpFB/GBe6eOBTYiF/VsQf/DWeO8dEH30aYnLSVK',0,0,'5e7db6356f379',1,1,'2020-03-27 08:15:49'),(35,'Maziere','Maxence','maziere.maxence@gmail.com','$2y$10$mihyLAacX.HC2zRDbVd0KeTYZ6NYNbEMU/Nz0j/3axZ3JHA9K9Zb.',62,62263,'605468f7cdb5d',1,1,'2021-03-19 10:03:51');
 /*!40000 ALTER TABLE `developpeur` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -133,4 +135,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-03-19  9:51:31
+-- Dump completed on 2021-03-19 10:06:39
