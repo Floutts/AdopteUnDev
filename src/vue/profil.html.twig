@@ -1,4 +1,5 @@
 {% extends "base.html.twig" %}
+{% block script %} <script src="js/getAdresse.js"> </script>{% endblock %}
 {% block contenu %}
 
    {% if unDeveloppeur is not null %}
@@ -28,6 +29,10 @@
                     <td>{{ unDeveloppeur.email }}</td>
                 </tr>
                 <tr>
+                    <th scope="row">Adresse</th>
+                    <td id='tdAdresse'></td>
+                </tr>
+                <tr>
                     <th scope="row">Langages connus</th>
                     <td> {% for l in listeLangage %}
                     {{ l.libelle }} ;
@@ -36,6 +41,7 @@
                     </td>
 
                 </tr>
+                
                 </tbody>
             </table>
             <button class="btn btn-lg btn-primary btn-block" type="submit"  name="btModifierProfil" > Modifier mon profil</button>

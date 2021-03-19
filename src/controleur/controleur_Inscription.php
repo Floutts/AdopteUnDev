@@ -12,6 +12,8 @@ function actionInscription($twig,$db)
         $confMdp = $_POST['ConfMdp'];
         $nom = $_POST['Nom'];
         $prenom = $_POST['Prenom'];
+        $departement = $_POST['departements'];
+        $commune = $_POST['communes'];
         $role = $_POST['Role'];
         $valide = 0;
         $form['valide'] = true;
@@ -21,7 +23,7 @@ function actionInscription($twig,$db)
         } else {
             $dateInscrit=date("Y-m-d H:i:s");
             $Developpeur = new Developpeur($db);
-            $exec = $Developpeur->insert($email, password_hash($mdp, PASSWORD_DEFAULT), $role, $nom, $prenom,$nbUnique,$valide,$dateInscrit);
+            $exec = $Developpeur->insert($email, password_hash($mdp, PASSWORD_DEFAULT), $role, $nom, $prenom,$departement,$commune,$nbUnique,$valide,$dateInscrit);
             if (!$exec) {
                 $form['valide'] = false;
                 $form['message'] = 'Problème d\'insertion dans la table developpeur ';

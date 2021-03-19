@@ -11,18 +11,18 @@ class Developpeur {
     public function __construct($db)
     {
         $this->db = $db;
-        $this->insert= $db->prepare("insert into developpeur(email, mdp, nom, prenom, idRole,NbUnique,validation,dateInscrit) values(:email, :mdp, :nom, :prenom, :role, :NbUnique, :validation, :dateInscrit)"); ;
+        $this->insert= $db->prepare("insert into developpeur(email, mdp, nom, prenom,codeDepartement,codeCommune, idRole,NbUnique,validation,dateInscrit) values(:email, :mdp, :nom, :prenom,:departement,:commune, :role, :NbUnique, :validation, :dateInscrit)"); ;
         $this->select= $db->prepare("select  `nom`, `prenom`, `email` FROM developpeur d WHERE email=:email");
-        $this->selectByEmail = $db->prepare("select nom,prenom,email,nbUnique,dateInscrit,validation,id from developpeur d where email=:email"); // penserz a utilisé select by email pour la profil et mettre tout ce qu'on veux dedans .
+        $this->selectByEmail = $db->prepare("select * from developpeur d where email=:email"); // penserz a utiliser select by email pour le profil et mettre tout ce qu'on veux dedans .
         $this->updateValidation= $db->prepare("update developpeur set validation=true where email=:email ");
         $this->connect= $db->prepare("select email, mdp ,idRole, validation from developpeur where email=:email");
         $this->updateMdp= $db->prepare("update developpeur set mdp=:mdp where email=:email");
     }
 
 
-    public function insert($email,$mdp,$role,$nom,$prenom,$nbUnique,$valide,$dateInscrit){
+    public function insert($email,$mdp,$role,$nom,$prenom,$departement,$commune,$nbUnique,$valide,$dateInscrit){
         $r = true;
-        $this->insert->execute(array(':email' => $email, ':mdp' => $mdp, ':role' => $role, ':nom' => $nom, ':prenom' => $prenom, ':NbUnique' => $nbUnique,':validation' => $valide,':dateInscrit' => $dateInscrit));
+        $this->insert->execute(array(':email' => $email, ':mdp' => $mdp, ':role' => $role, ':nom' => $nom, ':prenom' => $prenom,':departement' => $departement,':commune' => $commune, ':NbUnique' => $nbUnique,':validation' => $valide,':dateInscrit' => $dateInscrit));
         if ($this->insert->errorCode() != 0) {
             print_r($this->insert->errorInfo());
             $r = false;

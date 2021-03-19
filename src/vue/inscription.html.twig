@@ -1,7 +1,6 @@
 {% extends "base.html.twig" %}
+{% block script %} <script src="js/setAdresse.js"> </script>{% endblock %}
 {% block contenu %}
-
-
 
     {% if form.valide is defined %}
     {% if form.valide == true %}
@@ -45,11 +44,13 @@
             <input type="password" class="form-control" id="ConfMdp" name="ConfMdp" required>
         </div>
 
-        <select class="form-control col-md-8" name="departements" id="departements">
+            
+        <label for="departements">Adresse</label>
+        <select class="form-control" name="departements" id="departements" style="margin-bottom: 20px">
             <option value='0'>-- Selectionnez une region --</option>
         </select>
 
-        <select class="form-control col-md-8" name="communes" id="communes">
+        <select class="form-control" name="communes" id="communes" style="margin-bottom: 20px">
             <option value='0'>-- Selectionnez une commune --</option>
         </select>
 

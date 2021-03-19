@@ -47,7 +47,7 @@ $(document).ready(function() {
             communes.innerHTML = " <option value='0'>-- Selectionnez une commune --</option>";
 
             $.each(msg, function(index,e){
-                communes.innerHTML += "<option>" + e.nom + "</option>";
+                communes.innerHTML += "<option value ='"+ e.code +"'>" + e.nom + "</option>";
             });
         });
         // Fonction qui se lance lorsque l’accès au web service provoque une erreur
