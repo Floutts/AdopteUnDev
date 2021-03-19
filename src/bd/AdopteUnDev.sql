@@ -1,8 +1,8 @@
--- MySQL dump 10.16  Distrib 10.1.41-MariaDB, for debian-linux-gnu (x86_64)
+-- MySQL dump 10.18  Distrib 10.3.27-MariaDB, for debian-linux-gnu (x86_64)
 --
 -- Host: localhost    Database: AdopteUnDev
 -- ------------------------------------------------------
--- Server version	10.1.41-MariaDB-0+deb9u1
+-- Server version	10.3.27-MariaDB-1:10.3.27+maria~stretch
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -38,7 +38,7 @@ CREATE TABLE `code` (
 
 LOCK TABLES `code` WRITE;
 /*!40000 ALTER TABLE `code` DISABLE KEYS */;
-INSERT INTO `code` VALUES (6,9);
+INSERT INTO `code` VALUES (35,16);
 /*!40000 ALTER TABLE `code` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -63,7 +63,7 @@ CREATE TABLE `developpeur` (
   UNIQUE KEY `email` (`email`),
   KEY `idRole` (`idRole`),
   CONSTRAINT `developpeur_ibfk_1` FOREIGN KEY (`idRole`) REFERENCES `role` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -72,7 +72,7 @@ CREATE TABLE `developpeur` (
 
 LOCK TABLES `developpeur` WRITE;
 /*!40000 ALTER TABLE `developpeur` DISABLE KEYS */;
-INSERT INTO `developpeur` VALUES (2,'alphonse','gluiglui','a.g@fr','$2y$10$/63RwuPjVbSMGlVNFbBQCuwSt0Dg1oH7o6739cXzmVJgSp4nMYkSO','5e20393176315',2,0,'0000-00-00 00:00:00'),(4,'Jean','Bon','Jambon@gmail.com','$2y$10$cgS1xLhjZlFecBaQfIxbNug4NQAx/G2fvGoBhFwPIfTAH5I5Xhwae','5e26adabc2500',2,0,'0000-00-00 00:00:00'),(6,'Harry','Cauvert','Haricot.vert@gmail.com','$2y$10$Expnrsv0tfOMLotGgZdS3ONpBJIlJkQ81oYW8klm69Tw0TQ8fILXy','5e26af2ed620f',2,0,'0000-00-00 00:00:00'),(32,'Bayon','fabien','fabienbayon@yahoo.fr','$2y$10$WgboMXoVFQlESFJpFB/GBe6eOBTYiF/VsQf/DWeO8dEH30aYnLSVK','5e7db6356f379',1,1,'2020-03-27 08:15:49');
+INSERT INTO `developpeur` VALUES (2,'alphonse','gluiglui','a.g@fr','$2y$10$/63RwuPjVbSMGlVNFbBQCuwSt0Dg1oH7o6739cXzmVJgSp4nMYkSO','5e20393176315',2,0,'0000-00-00 00:00:00'),(4,'Jean','Bon','Jambon@gmail.com','$2y$10$cgS1xLhjZlFecBaQfIxbNug4NQAx/G2fvGoBhFwPIfTAH5I5Xhwae','5e26adabc2500',2,0,'0000-00-00 00:00:00'),(6,'Harry','Cauvert','Haricot.vert@gmail.com','$2y$10$Expnrsv0tfOMLotGgZdS3ONpBJIlJkQ81oYW8klm69Tw0TQ8fILXy','5e26af2ed620f',2,0,'0000-00-00 00:00:00'),(35,'Bayon','Fabien','fabienbayon@yahoo.fr','$2y$10$5wKl54wp8YUGCvr7Fa8Hd.Esu9j8FSjAV3//td2V1eTy2JQdHOVhC','60530921b0eaa',1,1,'2021-03-18 08:02:41');
 /*!40000 ALTER TABLE `developpeur` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -87,7 +87,7 @@ CREATE TABLE `langage` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `libelle` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -96,7 +96,7 @@ CREATE TABLE `langage` (
 
 LOCK TABLES `langage` WRITE;
 /*!40000 ALTER TABLE `langage` DISABLE KEYS */;
-INSERT INTO `langage` VALUES (1,'python'),(9,'PYTHON'),(10,'PYTHON'),(11,'php c la vie'),(12,'php c la vie'),(15,'lnaguafe');
+INSERT INTO `langage` VALUES (1,'python'),(11,'php c la vie'),(16,'MySql');
 /*!40000 ALTER TABLE `langage` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -133,4 +133,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-03-27  8:49:20
+-- Dump completed on 2021-03-19  8:58:33
