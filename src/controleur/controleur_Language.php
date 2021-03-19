@@ -1,6 +1,6 @@
 <?php
 
-function actionLangages($twig, $db)
+function actionAjoutLangages($twig, $db)
 {
     $form = array();
     $langage = new Langage($db);
