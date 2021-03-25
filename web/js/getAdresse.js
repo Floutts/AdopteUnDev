@@ -2,7 +2,8 @@ $(document).ready(function() {
 
     let tdAdresse = document.getElementById("tdAdresse");
     getUser();
-
+    let codeCommune;
+    let codeDepartement;
     function getUser(){
         var request= $.ajax({
             url: "http://serveur1.arras-sio.com/symfony4-4060/AdopteUnDev/web/index.php?page=developpeur", 
@@ -12,8 +13,8 @@ $(document).ready(function() {
                 xhr.overrideMimeType( "application/json; charset=utf-8" );
             }});
         request.done(function( msg ) {
-            let codeDepartement = msg.codeDepartement;
-            let codeCommune = msg.codeCommune;
+            codeDepartement = msg.codeDepartement;
+            codeCommune = msg.codeCommune;
             ajaxDepartement(codeDepartement);
             
         });
@@ -55,7 +56,7 @@ $(document).ready(function() {
         });
         // Fonction qui se lance lorsque l’accès au web service provoque une erreur
         request.fail(function( jqXHR, textStatus ) {
-            communes.style.display = 'none'
+            alert('error')
         });
     }
 });
