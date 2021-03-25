@@ -18,6 +18,10 @@ function getPage($db){
     $lesPages['ajoutLangages'] = "actionAjoutLangages;1";
     $lesPages['langages'] = "actionLangages;1";
     $lesPages['developpeur'] = "actionDev;1";
+    $lesPages['developpeurByDepartement'] = "actionDevByDepartement;1";
+    $lesPages['listeDeveloppeur'] = "actionListeDeveloppeur;1";
+
+    
 
 
     if ($db != null) {

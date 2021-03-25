@@ -1,0 +1,38 @@
+
+{% extends "base.html.twig" %}
+{% block script %} <script src="js/getDeveloppeur.js"> </script>{% endblock %}
+{% block contenu %}
+
+<br></br>
+<p class="font-weight-bolder">Liste des developpeurs en fonction de leur departement</p>
+<label for="departements">Veuillez choisir un departement</label>
+    <select class="form-control" name="departements" id="departements" style="margin-bottom: 20px">
+        <option value='0'>-- Selectionnez un departement --</option>
+    </select>
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
+<section class="container mt-4 mb-4">
+<div class="container" id="unDev">
+	<div class="row mb-3">
+		<div class="col-md-6">
+			<div class="d-flex flex-row border rounded">
+	  			<div class="p-0 w-25">
+	  			    <img src="https://c1.staticflickr.com/3/2862/12328317524_18e52b5972_k.jpg" class="img-thumbnail border-0" />
+	  				
+	  			</div>
+	  			<div class="pl-3 pt-2 pr-2 pb-2 w-75 border-left">
+	  					<h4 class="text-primary">Leanne Boulton</h4>
+	  					<h5 class="text-info">Photographer</h5>
+	  					<ul class="m-0 float-left" style="list-style: none; margin:0; padding: 0">
+	  						<li><i class="fab fa-facebook-square"></i> Facebook</li>
+	  						<li><i class="fab fa-twitter-square"></i> Twitter</li>
+	  					</ul>
+					
+				</div>
+			</div>
+		</div>
+
+</div>
+</section>
+
+{% endblock %}
