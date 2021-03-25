@@ -47,7 +47,7 @@ $(document).ready(function() {
         request.done(function( msg ) {
 
             $.each(msg, function(index,e){
-                    // unDev.innerHTML = "";
+                    unDev.innerHTML = "";
                     for(var key in tCommune){
                         var value = tCommune[key];
                         if (value["code"] == e.codeCommune ){
