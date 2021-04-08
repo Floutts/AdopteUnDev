@@ -6,7 +6,7 @@ $(document).ready(function() {
     let codeDepartement;
     function getUser(){
         var request= $.ajax({
-            url: "http://serveur1.arras-sio.com/symfony4-4060/AdopteUnDev/web/index.php?page=developpeur", 
+            url: "http://serveur1.arras-sio.com/symfony4-4061/AdopteUnDev/AdopteUnDev/web/index.php?page=developpeur", 
             method:"GET",
             dataType: "json",
             beforeSend: function( xhr ) {
