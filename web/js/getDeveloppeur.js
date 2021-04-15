@@ -47,7 +47,7 @@ $(document).ready(function() {
         request.done(function( msg ) {
 
             $.each(msg, function(index,e){
-                    // unDev.innerHTML = "";
+                    unDev.innerHTML = "";
                     for(var key in tCommune){
                         var value = tCommune[key];
                         if (value["code"] == e.codeCommune ){
@@ -62,8 +62,7 @@ $(document).ready(function() {
                     unDev.innerHTML += "<h5 class=\"text-info\">" + e.email + "</h5>";
                     unDev.innerHTML += "<h6 class=\"text\">" + nameCommune + "</h6>";
                     unDev.innerHTML += "<ul class=\"m-0 float-left\" style=\"list-style: none; margin:0; padding: 0\">";
-                    unDev.innerHTML += "<li>Facebook</li>";
-                    unDev.innerHTML += "<li>Twitter</li>";
+                    unDev.innerHTML += "<li>Langages</li>";
                     unDev.innerHTML += "</ul>";
                     unDev.innerHTML += "</div>";
                     unDev.innerHTML += "</div>";
