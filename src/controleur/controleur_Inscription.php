@@ -45,14 +45,10 @@ function actionInscription($twig,$db)
             //$message = wordwrap($message, 70, "\r\n");
             mail($email, 'Inscription AdopteUnDev', $message, implode("\n",$headers));
         }
-
         $form['email'] = $email;
         $form['role'] = $role;
-
     }
-
     echo $twig->render('inscription.html.twig', array('form' => $form));
-
 }
 
 
